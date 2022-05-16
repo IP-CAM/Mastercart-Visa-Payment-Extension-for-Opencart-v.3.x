@@ -1,13 +1,13 @@
 <?php
 
 // Heading 插件名称
-$_['heading_title']         = 'Inst Payment Master';
+$_['heading_title']         = 'Inst Payment MasterCard';
 
 // Text
 $_['text_extension']        = 'extension';
-$_['text_success']          = 'success：Inst Payment Master config has changed！';
+$_['text_success']          = 'success：Inst Payment MasterCard config has changed！';
 $_['text_edit']             = 'edit';
-$_['text_inst_master']      = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_master.png" alt="Inst Pay Master" title="Inst Pay Master" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_inst_master']      = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_master.png" alt="Inst Pay MasterCard" title="Inst Pay MasterCard" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_enabled_webhooks'] = 'enabled (url : https://{host}?route=extension/payment/inst_master/callback)';
 
 
@@ -26,6 +26,6 @@ $_['error_host']            = 'Please Input Domain!';
 $_['error_api_key']         = 'Please Input API Key!';
 $_['error_api_secret']      = 'Please Input API Secret!';
 $_['error_api_passphrase']  = 'Please Input API Password!';
-$_['error_permission']      = 'Error：No Permission of Inst Payment Master!';
+$_['error_permission']      = 'Error：No Permission of Inst Payment MasterCard!';
 
 ?>

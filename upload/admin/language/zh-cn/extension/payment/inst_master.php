@@ -1,13 +1,13 @@
 <?php
 
 // Heading 插件名称
-$_['heading_title']         = 'Inst Payment Master';
+$_['heading_title']         = 'Inst Payment MasterCard';
 
 // Text
 $_['text_extension']        = '扩展';
-$_['text_success']          = '成功：Inst Payment Master配置已修改！';
+$_['text_success']          = '成功：Inst Payment MasterCard配置已修改！';
 $_['text_edit']             = '编辑';
-$_['text_inst_master']      = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_master.png" alt="Inst Pay Master" title="Inst Pay Master" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_inst_master']      = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_master.png" alt="Inst Pay MasterCard" title="Inst Pay MasterCard" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_enabled_webhooks'] = '启用 (url : https://{host}?route=extension/payment/inst_master/callback)';
 
 

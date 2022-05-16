@@ -8,7 +8,8 @@ class ControllerExtensionPaymentInstMaster extends Controller {
 
         $this->load->model('checkout/order');
         $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
-        $payment_info = $this->session->data; // todo test
+//        $payment_info = $this->session->data;
+//        $products = $this->cart->getProducts();
 
         $timestamp = $this->getMillisecond();
         $method = 'POST';
@@ -19,57 +20,36 @@ class ControllerExtensionPaymentInstMaster extends Controller {
         $secret = $this->config->get('payment_inst_master_api_secret') . '';
         $passphrase = $this->config->get('payment_inst_master_api_passphrase') . '';
 
-//        $customer = array(
-//            'email' => $payment_info['payment_address']['email'],
-//            'phone' => '+' . $order_info['payment_calling_code'] . ' ' . $order_info['payment_telephone'],
-//            'first_name' => $order_info['payment_firstname'],
-//            'last_name' => $order_info['payment_lastname'],
-//            'country' => $order_info['payment_country'],
-//            'state' => $order_info['payment_zone'],
-//            'city' => $order_info['payment_city'],
-//            'address' => $order_info['payment_address_format'],
-//            'zipcode' => '',
-//        );
+        $customer = array(
+            'email' => $order_info['email'],
+            'phone' => $order_info['telephone'],
+            'first_name' => $order_info['payment_firstname'],
+            'last_name' => $order_info['payment_lastname'],
+            'country' => $order_info['payment_country'],
+            'state' => $order_info['payment_zone'],
+            'city' => $order_info['payment_city'],
+            'address' => $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'],
+            'zipcode' => $order_info['payment_postcode'],
+        );
 
-//        $product_info = $payment_info['cart_paypal'];
+//        $product_info = $products;
 //        $product_info = array(
 //            'name' => 'test'
 //        );
 
-//        $shipping_info = array(
-//            'address' => 'zh-cn'
-//            'shipping_firstname' => $order_info['shipping_firstname'],
-//            'shipping_lastname' => $order_info['shipping_lastname'],
-//            'shipping_calling_code' => $order_info['shipping_calling_code'],
-//            'shipping_telephone' => $order_info['shipping_telephone'],
-//            'shipping_company' => $order_info['shipping_company'],
-//            'shipping_address_1' => $order_info['shipping_address_1'],
-//            'shipping_address_2' => $order_info['shipping_address_2'],
-//            'shipping_postcode' => $order_info['shipping_postcode'],
-//            'shipping_city' => $order_info['shipping_city'],
-//            'shipping_city_id' => $order_info['shipping_city_id'],
-//            'shipping_zone_id' => $order_info['shipping_zone_id'],
-//            'shipping_zone' => $order_info['shipping_zone'],
-//            'shipping_zone_code' => $order_info['shipping_zone_code'],
-//            'shipping_country_id' => $order_info['shipping_country_id'],
-//            'shipping_country' => $order_info['shipping_country'],
-//            'shipping_county_id' => $order_info['shipping_county_id'],
-//            'shipping_county' => $order_info['shipping_county'],
-//            'shipping_iso_code_2' => $order_info['shipping_iso_code_2'],
-//            'shipping_iso_code_3' => $order_info['shipping_iso_code_3'],
-//            'shipping_address_format' => $order_info['shipping_address_format'],
-//            'shipping_custom_field' => $order_info['shipping_custom_field'],
-//            'shipping_method' => $order_info['shipping_method'],
-//            'shipping_code' => $order_info['shipping_code'],
-//        );
+        $shipping_info = array(
+            'address'  => $order_info['shipping_address_1'] . ' ' . $order_info['shipping_address_2'],
+            'zipcode'   => $order_info['shipping_postcode'],
+        );;
 
         $post_data = $this->formatArray(array(
             'currency' => $order_info['currency_code'],
             'amount' => number_format($this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false), 2),
             'cust_order_id' => 'OpenCart_' . $key . '_' .$order_info['order_id'],
-//            'customer' => $customer,
-//            'product_info' => $product_info,
-//            'shipping_info' => $shipping_info,
+            'customer' => $customer,
+//            'product_info' => $product_info, // todo
+            'shipping_info' => $shipping_info,
+            'network' => 'MasterCard',
         ));
 
         $sign = $this->sign($timestamp, $method, $requestPath, '', $key, $secret, $post_data);
@@ -81,7 +61,7 @@ class ControllerExtensionPaymentInstMaster extends Controller {
 
 //        // for test
 //        $preHash = $this->preHash($timestamp, $method, $requestPath, '', $key, $post_data);
-//        $this->response->setOutput(json_encode($preHash));
+//        $this->response->setOutput(json_encode($post_data));
 
     }
 
