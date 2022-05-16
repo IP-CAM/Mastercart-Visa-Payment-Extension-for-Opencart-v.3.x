@@ -1,6 +1,6 @@
 <?php
 
 // Text
-$_['text_title'] = 'VISA';
+$_['text_title'] = 'Visa';
 
 ?>
