@@ -49,7 +49,7 @@ class ControllerExtensionPaymentInstMaster extends Controller {
             'customer' => $customer,
 //            'product_info' => $product_info, // todo
             'shipping_info' => $shipping_info,
-            'network' => 'MasterCard',
+            'network' => 'Mastercard',
         ));
 
         $sign = $this->sign($timestamp, $method, $requestPath, '', $key, $secret, $post_data);
