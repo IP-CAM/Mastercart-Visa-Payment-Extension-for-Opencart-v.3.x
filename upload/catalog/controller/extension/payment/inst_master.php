@@ -42,8 +42,8 @@ class ControllerExtensionPaymentInstMaster extends Controller {
             'zipcode'   => $order_info['shipping_postcode'],
         );;
 
-        $host = $this->request->server['HTTPS'] ? 'https://' : 'http://' . $this->request->server['HTTP_HOST'];
-
+        $host = $this->request->server['HTTPS'] ? 'https://' : 'http://';
+        $host.= $this->request->server['HTTP_HOST'];
         $post_data = $this->formatArray(array(
             'currency' => $order_info['currency_code'],
             'amount' => number_format($this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false), 2),
