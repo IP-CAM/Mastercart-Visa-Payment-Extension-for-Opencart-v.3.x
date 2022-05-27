@@ -42,6 +42,8 @@ class ControllerExtensionPaymentInstMaster extends Controller {
             'zipcode'   => $order_info['shipping_postcode'],
         );;
 
+        $host = $this->request->server['HTTPS'] ? 'https://' : 'http://' . $this->request->server['HTTP_HOST'];
+
         $post_data = $this->formatArray(array(
             'currency' => $order_info['currency_code'],
             'amount' => number_format($this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false), 2),
@@ -50,6 +52,7 @@ class ControllerExtensionPaymentInstMaster extends Controller {
 //            'product_info' => $product_info, // todo
             'shipping_info' => $shipping_info,
             'network' => 'Mastercard',
+            'return_url' => $host . '/index.php?route=common/home',
         ));
 
         $sign = $this->sign($timestamp, $method, $requestPath, '', $key, $secret, $post_data);

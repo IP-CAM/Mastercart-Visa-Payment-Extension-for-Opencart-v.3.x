@@ -7,7 +7,7 @@ $_['heading_title']         = 'Inst Payment Visa';
 $_['text_extension']        = 'extension';
 $_['text_success']          = 'success：Inst Payment Visa config has changed！';
 $_['text_edit']             = 'edit';
-$_['text_inst_visa']        = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_visa.png" alt="Inst Pay Visa" title="Inst Pay Visa" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_inst_visa']        = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_visa.png" width="100" height="40" alt="Inst Pay Visa" title="Inst Pay Visa" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_enabled_webhooks'] = 'enabled (url : https://{host}?route=extension/payment/inst_visa/callback)';
 
 

@@ -7,7 +7,7 @@ $_['heading_title']         = 'Inst Payment MasterCard';
 $_['text_extension']        = '扩展';
 $_['text_success']          = '成功：Inst Payment MasterCard配置已修改！';
 $_['text_edit']             = '编辑';
-$_['text_inst_master']      = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_master.png" alt="Inst Pay MasterCard" title="Inst Pay MasterCard" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_inst_master']      = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_master.png" width="100" height="40" alt="Inst Pay MasterCard" title="Inst Pay MasterCard" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_enabled_webhooks'] = '启用 (url : https://{host}?route=extension/payment/inst_master/callback)';
 
 

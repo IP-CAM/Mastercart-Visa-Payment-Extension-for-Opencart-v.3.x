@@ -7,7 +7,7 @@ $_['heading_title']         = 'Inst Payment Visa';
 $_['text_extension']        = '扩展';
 $_['text_success']          = '成功：Inst Payment Visa配置已修改！';
 $_['text_edit']             = '编辑';
-$_['text_inst_visa']        = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_visa.png" alt="Inst Pay Visa" title="Inst Pay Visa" style="border: 1px solid #EEEEEE;" /></a>';
+$_['text_inst_visa']        = '<a target="_BLANK" href="https://www.inst.money/"><img src="view/image/payment/inst_visa.png" width="100" height="40" alt="Inst Pay Visa" title="Inst Pay Visa" style="border: 1px solid #EEEEEE;" /></a>';
 $_['text_enabled_webhooks'] = '启用 (url : https://{host}?route=extension/payment/inst_visa/callback)';
 
 
