@@ -52,7 +52,7 @@ class ControllerExtensionPaymentInstMaster extends Controller {
 //            'product_info' => $product_info, // todo
             'shipping_info' => $shipping_info,
             'network' => 'Mastercard',
-            'return_url' => $host . '/index.php?route=common/home',
+//            'return_url' => $host . '/index.php?route=common/home',
         ));
 
         $sign = $this->sign($timestamp, $method, $requestPath, '', $key, $secret, $post_data);
