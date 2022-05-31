@@ -47,7 +47,7 @@ class ControllerExtensionPaymentInstVisa extends Controller {
         $post_data = $this->formatArray(array(
             'currency' => $order_info['currency_code'],
             'amount' => number_format($this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false), 2),
-            'cust_order_id' => 'OpenCart_' . $key . '_' .$order_info['order_id'],
+            'cust_order_id' => 'OC_' . substr($key, 0, 5) . '_' . date("YmdHis",time()) . "_" .$order_info['order_id'],
             'customer' => $customer,
 //            'product_info' => $product_info, // todo
             'shipping_info' => $shipping_info,
@@ -174,7 +174,7 @@ class ControllerExtensionPaymentInstVisa extends Controller {
             if (strcmp($dataArray['action'], 'order_result') == 0) {
                 foreach ($dataArray['events'] as $val) {
                     $value = json_decode($val, true);
-                    $order_id = substr($value['params']['cust_order_id'], 42);
+                    $order_id = substr($value['params']['cust_order_id'], 24);
                     $this->load->model('checkout/order');
                     $order_info = $this->model_checkout_order->getOrder($order_id);
                     if ($order_info == false) {

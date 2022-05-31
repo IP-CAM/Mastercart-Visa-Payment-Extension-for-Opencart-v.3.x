@@ -1,9 +1,15 @@
+<style>
+    #new_iframe {display: none}
+</style>
 <div class="buttons">
-    <div class="pull-right">
+    <div style="text-align: end">
         <input type="button" value="{{ button_confirm }}" id="button-confirm" class="btn btn-primary" />
     </div>
+    <iframe
+            height='795' width=100% frameBorder='0' id="new_iframe">
+    </iframe>
 </div>
-<script type="text/javascript"><!--
+<script type="text/javascript">
     $('#button-confirm').bind('click', function() {
         $.ajax({
             url: 'index.php?route=extension/payment/inst_visa/confirm',
@@ -14,12 +20,16 @@
                     // console.log(obj['result']['redirect_url']);
                     // console.log("success");
                     // location = obj['result']['redirect_url'];
-                    window.open(obj['result']['redirect_url'])
+                    // window.open(obj['result']['redirect_url'])
+                    // window.location.href = obj['result']['redirect_url']
+
+                    document.getElementById("new_iframe").src = obj['result']['redirect_url'] + '&embedded=true'
+                    document.getElementById("new_iframe").style.display = 'inline'
                 }
             },
             error:function(){
-                alert("VISA confirm error");
+                alert("Confirm error");
             }
         });
     });
-//--></script>
+</script>
