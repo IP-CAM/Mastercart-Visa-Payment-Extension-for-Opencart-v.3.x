@@ -20,27 +20,27 @@ class ControllerExtensionPaymentInstVisa extends Controller {
         $secret = $this->config->get('payment_inst_visa_api_secret') . '';
         $passphrase = $this->config->get('payment_inst_visa_api_passphrase') . '';
 
-        $customer = array(
-            'email' => $order_info['email'],
-            'phone' => $order_info['telephone'],
-            'first_name' => $order_info['payment_firstname'],
-            'last_name' => $order_info['payment_lastname'],
-            'country' => $order_info['payment_country'],
-            'state' => $order_info['payment_zone'],
-            'city' => $order_info['payment_city'],
-            'address' => $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'],
-            'zipcode' => $order_info['payment_postcode'],
-        );
+//        $customer = array(
+//            'email' => $order_info['email'],
+//            'phone' => $order_info['telephone'],
+//            'first_name' => $order_info['payment_firstname'],
+//            'last_name' => $order_info['payment_lastname'],
+//            'country' => $order_info['payment_country'],
+//            'state' => $order_info['payment_zone'],
+//            'city' => $order_info['payment_city'],
+//            'address' => $order_info['payment_address_1'] . ' ' . $order_info['payment_address_2'],
+//            'zipcode' => $order_info['payment_postcode'],
+//        );
 
 //        $product_info = $products;
 //        $product_info = array(
 //            'name' => 'test'
 //        );
 
-        $shipping_info = array(
-            'address'  => $order_info['shipping_address_1'] . ' ' . $order_info['shipping_address_2'],
-            'zipcode'   => $order_info['shipping_postcode'],
-        );;
+//        $shipping_info = array(
+//            'address'  => $order_info['shipping_address_1'] . ' ' . $order_info['shipping_address_2'],
+//            'zipcode'   => $order_info['shipping_postcode'],
+//        );;
 
         $host = $this->request->server['HTTPS'] ? 'https://' : 'http://';
         $host.= $this->request->server['HTTP_HOST'];
@@ -48,9 +48,9 @@ class ControllerExtensionPaymentInstVisa extends Controller {
             'currency' => $order_info['currency_code'],
             'amount' => number_format($this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false), 2),
             'cust_order_id' => 'OC_' . substr($key, 0, 5) . '_' . date("YmdHis",time()) . "_" .$order_info['order_id'],
-            'customer' => $customer,
+//            'customer' => $customer,
 //            'product_info' => $product_info, // todo
-            'shipping_info' => $shipping_info,
+//            'shipping_info' => $shipping_info,
             'network' => 'Visa',
 //            'return_url' => $host . '/index.php?route=common/home',
         ));
