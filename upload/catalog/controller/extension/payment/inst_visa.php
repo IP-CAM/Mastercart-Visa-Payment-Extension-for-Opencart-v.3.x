@@ -118,6 +118,7 @@ class ControllerExtensionPaymentInstVisa extends Controller {
         $responseText = curl_exec($curl);
         if (!$responseText) {
             $this->log->write('INST NOTIFY CURL_ERROR: ' . var_export(curl_error($curl), true));
+            $responseText = var_export(curl_error($curl));
         }
         curl_close($curl);
 
