@@ -98,6 +98,12 @@ class ControllerExtensionPaymentInstVisa extends Controller {
             $data['payment_inst_visa_webhooks_status'] = $this->config->get('payment_inst_visa_webhooks_status');
         }
 
+        if (isset($this->request->post['payment_inst_visa_iframe'])) {
+            $data['payment_inst_visa_iframe'] = $this->request->post['payment_inst_visa_iframe'];
+        } else {
+            $data['payment_inst_visa_iframe'] = $this->config->get('payment_inst_visa_iframe');
+        }
+
         if (isset($this->request->post['payment_inst_visa_geo_zone_id'])) {
             $data['payment_inst_visa_geo_zone_id'] = $this->request->post['payment_inst_visa_geo_zone_id'];
         } else {

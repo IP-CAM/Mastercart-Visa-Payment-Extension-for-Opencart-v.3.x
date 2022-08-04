@@ -14,17 +14,20 @@
         $.ajax({
             url: 'index.php?route=extension/payment/inst_visa/confirm',
             dataType: 'json',
-            success: function(obj){
-                // console.log(JSON.stringify(obj));
-                if (obj['code'] === 0) {
-                    // console.log(obj['result']['redirect_url']);
+            success: function(data, textStatus, request) {
+                // console.log(JSON.stringify(data));
+                if (data['code'] === 0) {
+                    // console.log(data['result']['redirect_url']);
                     // console.log("success");
-                    // location = obj['result']['redirect_url'];
-                    // window.open(obj['result']['redirect_url'])
-                    // window.location.href = obj['result']['redirect_url']
-
-                    document.getElementById("new_iframe").src = obj['result']['redirect_url'] + '&embedded=true'
-                    document.getElementById("new_iframe").style.display = 'inline'
+                    // location = data['result']['redirect_url'];
+                    // window.open(data['result']['redirect_url'])
+                    // window.location.href = data['result']['redirect_url']
+                    if (request.getResponseHeader('iframe') === '1') {
+                        document.getElementById("new_iframe").src = data['result']['redirect_url'] + '&embedded=true'
+                        document.getElementById("new_iframe").style.display = 'inline'
+                    } else {
+                        window.open(data['result']['redirect_url'])
+                    }
                 }
             },
             error:function(){

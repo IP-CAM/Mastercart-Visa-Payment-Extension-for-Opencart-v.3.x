@@ -17,6 +17,7 @@ $_['entry_api_key']         = 'API Key:';
 $_['entry_api_secret']      = 'API Secret:';
 $_['entry_api_passphrase']  = 'API Password:';
 $_['entry_webhooks_status'] = '订单状态推送:';
+$_['entry_iframe']          = '支付页面是否嵌入显示:';
 $_['entry_geo_zone']        = '区域:';
 $_['entry_sort_order']      = '排序:';
 $_['entry_status']          = '状态:';

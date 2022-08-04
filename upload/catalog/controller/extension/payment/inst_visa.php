@@ -19,6 +19,7 @@ class ControllerExtensionPaymentInstVisa extends Controller {
         $key = $this->config->get('payment_inst_visa_api_key') . '';
         $secret = $this->config->get('payment_inst_visa_api_secret') . '';
         $passphrase = $this->config->get('payment_inst_visa_api_passphrase') . '';
+        $iframe = $this->config->get('payment_inst_visa_iframe') . '';
 
 //        $customer = array(
 //            'email' => $order_info['email'],
@@ -60,6 +61,7 @@ class ControllerExtensionPaymentInstVisa extends Controller {
         $result = $this->send_post($url, json_encode($post_data), $authorization, $passphrase);
 
         $this->response->addHeader('Content-Type: application/json');
+        $this->response->addHeader('iframe: ' . $iframe);
         $this->response->setOutput($result);
 
 //        // for test

@@ -98,6 +98,12 @@ class ControllerExtensionPaymentInstMaster extends Controller {
             $data['payment_inst_master_webhooks_status'] = $this->config->get('payment_inst_master_webhooks_status');
         }
 
+        if (isset($this->request->post['payment_inst_master_iframe'])) {
+            $data['payment_inst_master_iframe'] = $this->request->post['payment_inst_master_iframe'];
+        } else {
+            $data['payment_inst_master_iframe'] = $this->config->get('payment_inst_master_iframe');
+        }
+
         if (isset($this->request->post['payment_inst_master_geo_zone_id'])) {
             $data['payment_inst_master_geo_zone_id'] = $this->request->post['payment_inst_master_geo_zone_id'];
         } else {

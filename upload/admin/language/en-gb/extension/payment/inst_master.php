@@ -17,6 +17,7 @@ $_['entry_api_key']         = 'API Key:';
 $_['entry_api_secret']      = 'API Secret:';
 $_['entry_api_passphrase']  = 'API Password:';
 $_['entry_webhooks_status'] = 'Webhooks of order status:';
+$_['entry_iframe']          = 'Whether the payment page is embedded:';
 $_['entry_geo_zone']        = 'Geo Zone:';
 $_['entry_sort_order']      = 'Sort Order:';
 $_['entry_status']          = 'Status:';
