@@ -170,9 +170,9 @@ class ControllerExtensionPaymentInstVisa extends Controller {
         $result = true;
 
         if ($result) { //check succeed
-            $this->log->write('Inst check succeed');
             $tmpData = strval(file_get_contents("php://input"));
             $dataArray = json_decode($tmpData, true);
+            $this->log->write('Inst check succeed, data:' . $tmpData);
 
             if (strcmp($dataArray['action'], 'order_result') == 0) {
                 foreach ($dataArray['events'] as $val) {
@@ -187,10 +187,18 @@ class ControllerExtensionPaymentInstVisa extends Controller {
                         return;
                     }
 
-                    if ($value['params']['status'] == 1) {
-                        $this->load->model('checkout/order');
-                        $this->model_checkout_order->addOrderHistory($order_id, 1);
-                    } // todo 其他订单状态可自行添加
+                    $status = $value['params']['status'];
+                    $this->log->write('Inst order:' . $order_id . ', inst status:' . $status);
+                    if ($status == 1) { // 成功
+                        $this->model_checkout_order->addOrderHistory($order_id, 5);
+                    } elseif ($status == 4) { // 失败
+                        $this->model_checkout_order->addOrderHistory($order_id, 10);
+                    } elseif ($status == 5) { // 取消
+                        $this->model_checkout_order->addOrderHistory($order_id, 7);
+                    } elseif ($status == 6) { // 过期
+                        $this->model_checkout_order->addOrderHistory($order_id, 14);
+                    }
+                    // todo 其他订单状态可自行添加
                 }
 
             } // todo 是否需要接收其他推送action？
