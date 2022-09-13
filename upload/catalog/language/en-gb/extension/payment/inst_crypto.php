@@ -1,6 +1,6 @@
 <?php
 
 // Text
-$_['text_title'] = 'Crypto';
+$_['text_title'] = 'Pay with Crypto';
 
 ?>
